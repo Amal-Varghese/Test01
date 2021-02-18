@@ -55,8 +55,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
     super.dispose();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -78,6 +76,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       });
                     }
                     if (state is UserLoadError) {
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text('${state.message}')));
                       setState(() {
                         _isLoading = false;
                         _isSuccess = false;
@@ -105,6 +105,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       });
                     }
                     if (state is ReposLoadError) {
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text('${state.message}')));
                       setState(() {
                         _isLoading = false;
                         _isSuccess = false;

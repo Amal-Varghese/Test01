@@ -49,6 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       });
                     }
                     if (state is SearchLoadError) {
+                       Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text('${state.message}')));
                       setState(() {
                         _isLoading = false;
                       });
